@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HtmlScraperApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HtmlScraperApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HtmlScraperApplication.class, args);
+    }
 
     @Override
     public void run(String... args) throws Exception {
