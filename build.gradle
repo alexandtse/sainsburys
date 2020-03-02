@@ -36,6 +36,8 @@ dependencies {
 
 }
 
+
 test {
-    useJUnitPlatform()
+    useJUnit()
+    maxHeapSize = '1G'
 }
