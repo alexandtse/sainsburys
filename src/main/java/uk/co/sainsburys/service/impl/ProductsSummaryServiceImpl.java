@@ -15,18 +15,11 @@ import java.util.List;
 @Service
 public class ProductsSummaryServiceImpl implements ProductsSummaryService {
 
-    private ProductService productService;
 
     @Value("${product.vatRate:20}")
     private int vatRate;
 
-    @Autowired
-    public ProductsSummaryServiceImpl(@Qualifier("productService") ProductService productService) {
-        this.productService  = productService;
-    }
-
-    public ProductsSummary getProductsSummary() {
-        List<Product> products = productService.getProduct();
+    public ProductsSummary getProductsSummary(List<Product> products) {
         Double gross = this.calculateGross(products);
         Double vat = this.calculateVat(gross);
 

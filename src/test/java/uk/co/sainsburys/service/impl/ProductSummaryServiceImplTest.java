@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 public class ProductSummaryServiceImplTest {
 
@@ -26,20 +25,15 @@ public class ProductSummaryServiceImplTest {
     private ProductsSummaryServiceImpl productsSummaryService;
 
 
-    @Mock
-    private ProductService mockProductService;
-
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
-        productsSummaryService = new ProductsSummaryServiceImpl(mockProductService);
+        productsSummaryService = new ProductsSummaryServiceImpl();
         productsSummaryService.setVatRate(VAT_RATE);
     }
     @Test
     public void givenProductListIsEmptyThenGrossAndVatIsZero() {
-        when(mockProductService.getProduct()).thenReturn(new ArrayList<Product>());
 
-        ProductsSummary summary = productsSummaryService.getProductsSummary();
+        ProductsSummary summary = productsSummaryService.getProductsSummary(new ArrayList<Product>());
         assertEquals(0d, summary.getGross(), DELTA);
         assertEquals(0d, summary.getVat(), DELTA);
 
@@ -47,9 +41,8 @@ public class ProductSummaryServiceImplTest {
 
     @Test
     public void givenProductListIsNotEmptyThenReturnNonZeroGrossAndVat() {
-        when(mockProductService.getProduct()).thenReturn(this.setupProducts());
 
-        ProductsSummary summary = productsSummaryService.getProductsSummary();
+        ProductsSummary summary = productsSummaryService.getProductsSummary(this.setupProducts());
         assertEquals(GROSS, summary.getGross(), DELTA);
         assertEquals(VAT, summary.getVat(), DELTA);
     }
