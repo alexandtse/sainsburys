@@ -1,13 +1,10 @@
 package uk.co.sainsburys.service.impl;
 
 import org.apache.commons.lang3.math.NumberUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import uk.co.sainsburys.models.Product;
 import uk.co.sainsburys.models.ProductsSummary;
-import uk.co.sainsburys.service.ProductService;
 import uk.co.sainsburys.service.ProductsSummaryService;
 
 import java.util.List;

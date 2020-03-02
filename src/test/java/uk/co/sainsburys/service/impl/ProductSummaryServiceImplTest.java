@@ -1,13 +1,9 @@
 package uk.co.sainsburys.service.impl;
 
-import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import uk.co.sainsburys.models.Product;
 import uk.co.sainsburys.models.ProductsSummary;
-import uk.co.sainsburys.service.ProductService;
 
 import java.util.ArrayList;
 import java.util.List;
