@@ -80,20 +80,20 @@ public class BaseProductServiceImplTest {
         subject.setProductListingUrl(URL_STRING + URL_SUB_PATH);
         Document doc = Jsoup.parse(HTML_WITHOUT_PRODUCT_DIVS);
         when(mockParser.retrieveHtmlDocument(url)).thenReturn(doc);
-        assertTrue(subject.getBaseProduct().isEmpty());
+        assertTrue(subject.getProduct().isEmpty());
     }
 
     @Test
     public void givenUrlIsMalformedUrlThenReturnEmptyProductList() {
         subject.setProductListingUrl("www.test.com");
-        assertTrue(subject.getBaseProduct().isEmpty());
+        assertTrue(subject.getProduct().isEmpty());
     }
 
     @Test
     public void givenHtmlParserIsThrowingIoExceptionWhenCreatingDocumentThenReturnEmptyProductList() throws IOException{
         subject.setProductListingUrl(URL_STRING + URL_SUB_PATH);
         when(mockParser.retrieveHtmlDocument(url)).thenThrow(new IOException());
-        assertTrue(subject.getBaseProduct().isEmpty());
+        assertTrue(subject.getProduct().isEmpty());
     }
 
     @Test
@@ -101,7 +101,7 @@ public class BaseProductServiceImplTest {
         subject.setProductListingUrl(URL_STRING + URL_SUB_PATH);
         Document doc = Jsoup.parse(HTML_WITH_ONE_PRODUCT_DIVS);
         when(mockParser.retrieveHtmlDocument(url)).thenReturn(doc);
-        List<Product> products = subject.getBaseProduct();
+        List<Product> products = subject.getProduct();
         assertFalse(products.isEmpty());
         assertEquals(1, products.size());
         assertEquals(PRODUCT_TITLE1, products.get(0).getTitle());
@@ -114,7 +114,7 @@ public class BaseProductServiceImplTest {
         subject.setProductListingUrl(URL_STRING + URL_SUB_PATH);
         Document doc = Jsoup.parse(HTML_WITH_TWO_PRODUCT_DIVS);
         when(mockParser.retrieveHtmlDocument(url)).thenReturn(doc);
-        List<Product> products = subject.getBaseProduct();
+        List<Product> products = subject.getProduct();
         assertFalse(products.isEmpty());
         assertEquals(2, products.size());
         assertEquals(PRODUCT_TITLE1, products.get(0).getTitle());
@@ -130,7 +130,7 @@ public class BaseProductServiceImplTest {
         subject.setProductListingUrl(URL_STRING + URL_SUB_PATH);
         Document doc = Jsoup.parse(HTML_WITH_ONE_PRODUCT_DIVS_ABSOLUTE_PATH);
         when(mockParser.retrieveHtmlDocument(url)).thenReturn(doc);
-        List<Product> products = subject.getBaseProduct();
+        List<Product> products = subject.getProduct();
         assertFalse(products.isEmpty());
         assertEquals(1, products.size());
         assertEquals(PRODUCT_TITLE1, products.get(0).getTitle());
@@ -143,7 +143,7 @@ public class BaseProductServiceImplTest {
         subject.setProductListingUrl(URL_STRING + URL_SUB_PATH);
         Document doc = Jsoup.parse(HTML_WITH_ONE_PRODUCT_DIVS_MALFORMED_PATH);
         when(mockParser.retrieveHtmlDocument(url)).thenReturn(doc);
-        List<Product> products = subject.getBaseProduct();
+        List<Product> products = subject.getProduct();
         assertFalse(products.isEmpty());
         assertEquals(1, products.size());
         assertEquals(PRODUCT_TITLE1, products.get(0).getTitle());

@@ -4,7 +4,7 @@ import uk.co.sainsburys.models.Product;
 
 import java.util.List;
 
-public interface BaseProductService {
+public interface ProductService {
 
-    List<Product> getBaseProduct();
+    List<Product> getProduct();
 }

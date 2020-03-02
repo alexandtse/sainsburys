@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import uk.co.sainsburys.models.Product;
 import uk.co.sainsburys.parser.HtmlParser;
-import uk.co.sainsburys.service.BaseProductService;
+import uk.co.sainsburys.service.ProductService;
 import uk.co.sainsburys.utils.UnitPriceExtractor;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class BaseProductServiceImpl implements BaseProductService {
+public class BaseProductServiceImpl implements ProductService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseProductServiceImpl.class);
     private static final String HREF_KEY = "href";
@@ -40,7 +40,7 @@ public class BaseProductServiceImpl implements BaseProductService {
         this.parser = parser;
     }
 
-    public List<Product> getBaseProduct() {
+    public List<Product> getProduct() {
         Document doc = this.retrieveDocument();
         List<Product> products = new ArrayList<>();
         if(null != doc) {
