@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Service("baseProductService")
 public class BaseProductServiceImpl implements ProductService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseProductServiceImpl.class);
