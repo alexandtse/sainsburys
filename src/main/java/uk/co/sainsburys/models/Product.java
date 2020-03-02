@@ -1,5 +1,9 @@
 package uk.co.sainsburys.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.net.URL;
 
 public class Product {
@@ -26,14 +30,18 @@ public class Product {
         return description;
     }
 
+    @JsonProperty("kcal_per_100g")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     public Integer getCalories() {
         return calories;
     }
 
+    @JsonProperty("unit_price")
     public double getPrice() {
         return price;
     }
 
+    @JsonIgnore
     public URL getUrl() {
         return url;
     }

@@ -1,5 +1,7 @@
 package uk.co.sainsburys.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Basket {
@@ -10,9 +12,11 @@ public class Basket {
         this.products = products;
         this.summary = summary;
     }
+    @JsonProperty("results")
     public List<Product> getProducts() {
         return products;
     }
+    @JsonProperty("total")
     public ProductsSummary getSummary() {
         return summary;
     }
